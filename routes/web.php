@@ -16,7 +16,7 @@ use App\Http\Controllers\GudangController;
 |
 */
 
-Route::get('/', [LoginController::class,'halamanlogin']);
+Route::get('/', [LoginController::class,'halamanlogin'])->name('login');
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function(){    

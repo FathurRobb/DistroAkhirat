@@ -236,6 +236,6 @@
 </div>
 <!-- ./wrapper -->
 
-@include('Layout.script');
+@include('Layout.script')
 </body>
 </html>

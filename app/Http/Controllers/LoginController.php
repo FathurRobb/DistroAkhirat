@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use Auth;
 use DB;
-use Illuminate\Http\Request;
+use Validator;
 
 class LoginController extends Controller
 {
     public function halamanlogin(){
         return view('login');
     }
-    public function postlogin(Request $request){
+    public function postlogin(Request $request){        
         if(Auth::attempt($request->only('username','password'))){
             $akun = DB::table('users')->where('username', $request->username)->first();
             if ($akun->level == 'admin') {
@@ -24,17 +26,12 @@ class LoginController extends Controller
                 Auth::guard('gudang')->LoginUsingId($akun->id);
                 return redirect('/gudang')->with('sukses','Anda Berhasil Login');
             }
+        }else {
+            return view('login')->with('error','Username Atau Password Anda Salah');
         }
-        return redirect('/')->with('error','Cek Username dan Password Anda');
     }
     public function logout(){
-        if (Auth::guard('admin')->check()) {
-            Auth::guard('admin')->logout();
-        }elseif (Auth::guard('kasir')->check()) {
-            Auth::guard('kasir')->logout();
-        }elseif (Auth::guard('gudang')->check()) {
-            Auth::guard('gudang')->logout();
-        }
+        Auth::logout();
         return redirect('/')->with('sukses','Anda Telah Logout');
     }
 }
