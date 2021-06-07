@@ -34,6 +34,8 @@ class GudangController extends Controller
             'kode_brg'=> $request->kode_brg,
             'nm_brg'=> $request->nm_brg,
             'kategori'=>$request->kategori,
+            'jenis'=>$request->jenis,
+            'ukuran'=>$request->ukuran,
             'stok_brg'=>$request->stok,
             'satuan_brg'=>$request->satuan,
             'harga_brg'=>$request->harga,

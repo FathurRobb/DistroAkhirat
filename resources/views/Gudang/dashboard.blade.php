@@ -28,6 +28,7 @@
                 <td>{{ $item->nm_brg }}</td>
                 <td>{{ $item->kategori }}</td>
                 <td>{{ $item->jenis }}</td>
+                <td>{{ $item->ukuran}}</td>
                 <td>{{ $item->stok_brg }}</td>
                 <td>{{ $item->satuan_brg }}</td>
                 <td>{{ $item->harga_brg }}</td>
@@ -86,6 +87,10 @@
                                     <option value="{{$items->id}}">{{$items->nama}}</option>
                                     @endforeach --}}
                                 </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Ukuran</label>
+                                <input type="text" name="stok_brg" class="form-control">
                             </div>
                             <div class="form-group col-6">
                                 <label for="">Stok</label>

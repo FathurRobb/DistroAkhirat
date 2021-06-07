@@ -19,6 +19,7 @@ class CreateGudangsTable extends Migration
             $table->string('nm_brg');
             $table->string('kategori');
             $table->string('jenis');
+            $table->string('ukuran');
             $table->bigInteger('stok_brg');
             $table->string('satuan_brg');
             $table->bigInteger('harga_brg');
