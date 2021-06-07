@@ -237,5 +237,6 @@
 <!-- ./wrapper -->
 
 @include('Layout.script')
+@yield('js')
 </body>
 </html>
