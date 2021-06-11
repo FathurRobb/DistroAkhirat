@@ -11,12 +11,13 @@
         <thead>
         <tr>
           <th>Kode</th>
-          <th>Nama</th>
-          <th>Kategori</th>
           <th>Jenis</th>
+          <th>Nama</th>
+          <th>Warna</th>
+          <th>Ukuran</th>
           <th>Stok</th>
-          <th>Satuan</th>
-          <th>Harga</th>
+          <th>Harga Beli</th>
+          <th>Harga Jual</th>
           <th>Detail</th>
           <th>Opsi</th>
         </tr>
@@ -25,13 +26,13 @@
             @foreach($gudang as $item)
             <tr>
                 <td>{{ $item->kode_brg }}</td>
-                <td>{{ $item->nm_brg }}</td>
-                <td>{{ $item->kategori }}</td>
                 <td>{{ $item->jenis }}</td>
+                <td>{{ $item->nm_brg }}</td>
+                <td>{{ $item->warna }}</td>
                 <td>{{ $item->ukuran}}</td>
                 <td>{{ $item->stok_brg }}</td>
-                <td>{{ $item->satuan_brg }}</td>
-                <td>{{ $item->harga_brg }}</td>
+                <td>{{ $item->harga_beli_brg }}</td>
+                <td>{{ $item->harga_jual_brg }}</td>
                 <td>{{ $item->detail }}</td>
                 <td>
                     <a href="barang/edit/{{$item->id}}"><i class="fa fa-edit"></i> </a>

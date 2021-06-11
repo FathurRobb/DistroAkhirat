@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKategorisTable extends Migration
+class Orders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateKategorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategoris', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_kat');
-            $table->string('nm_kat');
-            $table->string('detail');
-            $table->timestamps();
+        Schema::create('orders', function (Blueprint $table){
+            $table->bigIncrements('id');
+            $table->timestamp('tanggal_order')->useCurrent();
+            $table->double('total_order');
+            $table->double('uang_order');
+            $table->double('kembalian_order');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateKategorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoris');
+        //
     }
 }

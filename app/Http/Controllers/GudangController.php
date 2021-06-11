@@ -32,13 +32,13 @@ class GudangController extends Controller
     public function store(Request $request){
         DB::table('gudangs')->insert([
             'kode_brg'=> $request->kode_brg,
-            'nm_brg'=> $request->nm_brg,
-            'kategori'=>$request->kategori,
             'jenis'=>$request->jenis,
+            'nm_brg'=> $request->nm_brg,
+            'warna'=>$request->warna,
             'ukuran'=>$request->ukuran,
             'stok_brg'=>$request->stok,
-            'satuan_brg'=>$request->satuan,
-            'harga_brg'=>$request->harga,
+            'harga_beli_brg'=>$request->harga_beli,
+            'harga_jual_brg'=>$request->harga_jual,
             'detail'=>$request->detail
             ]);
             //return redirect('');

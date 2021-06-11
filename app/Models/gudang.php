@@ -12,9 +12,9 @@ class gudang extends Model
     protected $fillable = [
         'kode_brg',
         'nm_brg',
-        'kategori',
+        'warna',
         'stok_brg',
-        'satuan_brg',
-        'harga_brg',
+        'harga_jual_brg',
+        'harga_beli_brg',
         'detail'];
 }

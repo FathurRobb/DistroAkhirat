@@ -19,7 +19,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a class="h1"><b>Distro</b>Akhirat</a>
+      <a href="#" class="h1"><b>Distro</b>Akhirat</a>
     </div>
     <div class="card-body">
       @if(isset($error))

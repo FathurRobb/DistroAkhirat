@@ -18,20 +18,20 @@ class LoginController extends Controller
             $akun = DB::table('users')->where('username', $request->username)->first();
             if ($akun->level == 'admin') {
                 Auth::guard('admin')->LoginUsingId($akun->id);
-                return redirect('/admin')->with('sukses','Anda Berhasil Login');
+                return redirect('/admin');
             }elseif ($akun->level == 'kasir') {
                 Auth::guard('kasir')->LoginUsingId($akun->id);
-                return redirect('/kasir')->with('sukses','Anda Berhasil Login');
+                return redirect('/kasir');
             }elseif ($akun->level == 'gudang') {
                 Auth::guard('gudang')->LoginUsingId($akun->id);
-                return redirect('/gudang')->with('sukses','Anda Berhasil Login');
+                return redirect('/gudang');
             }
         }else {
-            return view('login')->with('error','Username Atau Password Anda Salah');
+            return view('login')->with('error','Username Atau Password Anda Salah ');
         }
     }
     public function logout(){
         Auth::logout();
-        return redirect('/')->with('sukses','Anda Telah Logout');
+        return redirect('/');
     }
 }
