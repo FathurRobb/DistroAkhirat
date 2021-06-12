@@ -27,8 +27,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
       <a href="#" class="navbar-brand">
         <img src="{{asset('template')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-bold">AIC</span><span class="brand-text font-weight-light">ompany</span>
       </a>
+
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="/kasir" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/kasir/history" class="nav-link">History</a>
+          </li>
+        </ul>
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
@@ -50,12 +60,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"><strong>Transaksi</strong>  <small>Penjualan</small></h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Transaksi</li>
-            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

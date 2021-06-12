@@ -212,4 +212,14 @@ class KasirController extends Controller
             return redirect()->back();
         }        
     }
+
+    public function history(){
+        $history = Transcation::orderBy('created_at','desc')->paginate(10);
+        return view('Kasir.history',compact('history'));
+    }
+
+    public function laporan($id){
+        $transaksi = Transcation::with('productTranscation')->find($id);
+        return view('Kasir.transaksi',compact('transaksi'));
+    }
 }
