@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\gudang;
-use App\Models\order;
-use App\Models\order_detail;
+use App\Models\orders;
+use App\Models\order_details;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 use Darryldecode\Cart\CartCondition;
 
@@ -16,7 +17,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 class KasirController extends Controller
 {
     public function index(){
-        $gudang = DB::table('gudangs')->join('jenis','jenis.id','=','gudangs.jenis')->get();
+        $gudang = DB::table('gudangs')->get();
         
         //cart item
         if(request()->tax){
@@ -44,7 +45,10 @@ class KasirController extends Controller
             foreach($items as $row) {
                 $cart[] = [
                     'rowId' => $row->id,
+                    'code' => $row->code,
                     'name' => $row->name,
+                    'color' => $row->color,
+                    'size' => $row->size,
                     'qty' => $row->quantity,
                     'pricesingle' => $row->price,
                     'price' => $row->getPriceSum(),
@@ -97,7 +101,10 @@ class KasirController extends Controller
         }else{
              \Cart::session(Auth()->id())->add(array(
             'id' => $id,
+            'code' => $gudang->kode_brg,
             'name' => $gudang->nm_brg,
+            'color' => $gudang->warna,
+            'size' => $gudang->ukuran,
             'price' => $gudang->harga_jual_brg,
             'quantity' => 1, 
             'attributes' => array(
@@ -137,9 +144,18 @@ class KasirController extends Controller
                 ];
             });
             
-            $id = IdGenerator::generate(['table' => 'orders', 'length' => 10, 'prefix' =>'INV-', 'field' => 'invoices_number']);
+            foreach($filterCart as $cart){
+                $gudang = Gudang::find($cart['id']);
+                
+                if($gudang->stok_brg == 0){
+                    return redirect()->back()->with('errorTransaksi','jumlah pembayaran gak valid');  
+                }
+                
+            }
 
-            Orders::create([
+            $id = IdGenerator::generate(['table' => 'orders', 'length' => 10, 'prefix' =>'INV-', 'field' => 'invoices']);
+
+            orders::create([
                 'invoices' => $id,
                 'total_order' => $cart_total,
                 'uang_order' => request()->bayar,
@@ -149,7 +165,7 @@ class KasirController extends Controller
 
             foreach($filterCart as $cart){    
 
-                OrderDetail::create([
+                order_details::create([
                     'invoices' => $id,
                     'id_barang' => $cart['id'],
                     'qty' => $cart['quantity'],
@@ -175,7 +191,7 @@ class KasirController extends Controller
     }
 
     public function decreasecart($id){
-        $product = Product::find($id);      
+        $gudang = Gudang::find($id);      
                 
         $cart = \Cart::session(Auth()->id())->getContent();        
         $cek_itemId = $cart->whereIn('id', $id); 
@@ -195,12 +211,12 @@ class KasirController extends Controller
 
 
     public function increasecart($id){
-        $product = Product::find($id);     
+        $gudang = Gudang::find($id);     
         
         $cart = \Cart::session(Auth()->id())->getContent();        
         $cek_itemId = $cart->whereIn('id', $id); 
 
-        if($product->qty == $cek_itemId[$id]->quantity){
+        if($gudang->stok_brg == $cek_itemId[$id]->quantity){
             return redirect()->back()->with('error','jumlah item kurang');
         }else{
             \Cart::session(Auth()->id())->update($id, array(
@@ -214,7 +230,7 @@ class KasirController extends Controller
     }
 
     public function history(){
-        $history = Transcation::orderBy('created_at','desc')->paginate(10);
+        $history = orders::select('orders.invoices','orders.total_order','orders.uang_order','users.nama','orders.created_at AS tanggal_transaksi')->orderBy('orders.created_at','asc')->join('users','users.id','=','orders.id_user')->get();
         return view('Kasir.history',compact('history'));
     }
 

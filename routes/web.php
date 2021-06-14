@@ -28,6 +28,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/kasir/increasecart/{id}', [KasirController::class,'increasecart']);
     Route::post('/kasir/decreasecart/{id}', [KasirController::class,'decreasecart']);
     Route::post('/kasir/bayar', [KasirController::class,'bayar']);
-    Route::post('/kasir/history', [KasirController::class,'history']);
-    Route::post('/kasir/laporan/{id}', [KasirController::class,'laporan']);
+    Route::get('/kasir/history', [KasirController::class,'history']);
+    Route::get('/kasir/laporan/{id}', [KasirController::class,'laporan']);
 });
