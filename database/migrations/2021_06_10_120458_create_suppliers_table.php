@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class OrderDetails extends Migration
+class CreateSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class OrderDetails extends Migration
      */
     public function up()
     {
-        Schema::create('order_details', function(blueprint $table){
-            $table->bigIncrements('id');
-            $table->bigInteger('id_order');
-            $table->integer('id_barang');
-            $table->integer('qty');
-            $table->double('total');
+        Schema::create('suppliers', function (Blueprint $table) {
+            $table->id();
+            $table->string('kode');
+            $table->string('nama');
+            $table->bigInteger('notlp');
+            $table->text('alamat');
+            //$table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ class OrderDetails extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('suppliers');
     }
 }

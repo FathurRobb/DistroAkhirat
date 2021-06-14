@@ -15,10 +15,10 @@ class CreateJenisTable extends Migration
     {
         Schema::create('jenis', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_jns');
+            //$table->string('kode_jns');
             $table->string('nm_jns');
             $table->string('detail');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

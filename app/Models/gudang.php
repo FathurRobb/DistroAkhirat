@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class gudang extends Model
 {
-    
+
     protected $table = 'gudangs';
     protected $fillable = [
         'kode_brg',
         'nm_brg',
         'warna',
+        'jenis',
+        'ukuran',
         'stok_brg',
-        'harga_jual_brg',
-        'harga_beli_brg',
+        'hrg_beli',
+        'hrg_jual',
         'detail'];
 }

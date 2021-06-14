@@ -18,23 +18,23 @@ class UserSeeder extends Seeder
         User::truncate();
         User::insert([
             [
-                'username' => 'ceokeren',
+                'username' => 'admin',
                 'level' => 'admin',
                 'password' => bcrypt('admin'),
                 'nik_karyawan' => '32647298702479',
                 'remember_token' => Str::random(60),
             ],
             [
-                'username' => 'kasir01',
+                'username' => 'kasir',
                 'level' => 'kasir',
-                'password' => bcrypt('kasirkampret'),
+                'password' => bcrypt('kasir'),
                 'nik_karyawan' => '32567428928948',
                 'remember_token' => Str::random(60),
             ],
             [
-                'username' => 'gudang69',
+                'username' => 'gudang',
                 'level' => 'gudang',
-                'password' => bcrypt('enamsembilan'),
+                'password' => bcrypt('gudang'),
                 'nik_karyawan' => '32478264892702',
                 'remember_token' => Str::random(60),
             ],

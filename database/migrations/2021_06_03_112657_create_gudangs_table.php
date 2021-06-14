@@ -16,15 +16,16 @@ class CreateGudangsTable extends Migration
         Schema::create('gudangs', function (Blueprint $table) {
             $table->id();
             $table->string('kode_brg')->unique();
-            $table->string('jenis');
             $table->string('nm_brg');
             $table->string('warna');
+            $table->string('jenis');
             $table->string('ukuran');
             $table->bigInteger('stok_brg');
-            $table->bigInteger('harga_beli_brg');
-            $table->bigInteger('harga_jual_brg');
+            $table->bigInteger('hrg_beli');
+            $table->bigInteger('hrg_jual');
+            //$table->string('satuan_brg');
             $table->text('detail');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

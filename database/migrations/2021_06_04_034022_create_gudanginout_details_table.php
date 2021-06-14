@@ -13,11 +13,11 @@ class CreateGudanginoutDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gudanginout_details', function (Blueprint $table) {
+        Schema::create('gudangin_details', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_brg');
-            $table->string('type');
-            $table->bigInteger('id_brg_io');
+            //$table->string('type');
+            $table->bigInteger('id_brg_in');
             $table->bigInteger('amount');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateGudanginoutDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gudanginout_details');
+        Schema::dropIfExists('gudangin_details');
     }
 }

@@ -20,10 +20,10 @@
         <tbody>
             @foreach($supplier as $item)
             <tr>
-                <td>{{ $item->kode_sp }}</td>
-                <td>{{ $item->nm_sp }}</td>
-                <td>{{ $item->notlp_sp }}</td>
-                <td>{{ $item->alamat_sp }}</td>
+                <td>{{ $item->kode }}</td>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->notlp }}</td>
+                <td>{{ $item->alamat }}</td>
                 <td>
                     <button class="btn btn-sm btn-warning" onclick="">Ubah</button>
                     <button class="btn btn-sm btn-danger" onclick="">Hapus</button>
@@ -37,23 +37,8 @@
     </div>
     </div>
 </div>
+
+
 @endsection
 @section('js')
-<script>
-    $(function () {
-      $("#gudang").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
 @endsection

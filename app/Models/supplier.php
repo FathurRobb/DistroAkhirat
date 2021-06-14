@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class jenis extends Model
+class supplier extends Model
 {
-    protected $table = 'jenis';
-    protected $fillable = ['nm_jns','detail'];
+    protected $table = 'suppliers';
+    protected $fillable = ['kode','nama','notlp','alamat'];
 }

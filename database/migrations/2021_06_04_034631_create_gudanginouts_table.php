@@ -13,12 +13,12 @@ class CreateGudanginoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gudanginouts', function (Blueprint $table) {
+        Schema::create('gudangins', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            //$table->string('type');
             $table->bigInteger('no_faktur');
             $table->bigInteger('no_order');
-            $table->bigInteger('nik_karyawan');
+            //$table->bigInteger('nik_karyawan');
             $table->bigInteger('id_supplier');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateGudanginoutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gudanginouts');
+        Schema::dropIfExists('gudangins');
     }
 }
